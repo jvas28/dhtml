@@ -2,6 +2,8 @@
 
 This project starts as a simple, quick :rocket:, and probably ugly :poop: solution for designers to be able to showcase the different behaviours a markup can accomplish by only changing attributes (basically `class` attributes now... :laughing:).
 
+[DEMO](https://jvas28.github.io/dhtml/)
+
 ## Getting started
 
 As this is a quick project it was created using `create-react-app`, with the only adission of tailwind and sass support. So in order to get it ready let's do...
