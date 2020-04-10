@@ -2,6 +2,7 @@
   "name": "dhtml",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://jvas28.github.io/dhtml",
   "dependencies": {
     "@babel/core": "7.9.0",
     "@svgr/webpack": "4.3.3",
@@ -66,6 +67,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "deploy": "gh-pages -d build",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
@@ -137,5 +139,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.2.0"
   }
 }
