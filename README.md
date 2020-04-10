@@ -1,68 +1,98 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# DynamicHTML
 
-## Available Scripts
+This project starts as a simple, quick :rocket:, and probably ugly :poop: solution for designers to be able to showcase the different behaviours a markup can accomplish by only changing attributes (basically `class` attributes now... :laughing:).
 
-In the project directory, you can run:
+## Getting started
 
-### `yarn start`
+As this is a quick project it was created using `create-react-app`, with the only adission of tailwind and sass support. So in order to get it ready let's do...
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```shell
+git clone https://github.com/jvas28/dhtml.git
+yarn install
+yarn start
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## How it works
 
-### `yarn test`
+The project comes with a default template built using [Bootstrap's Product Example](https://getbootstrap.com/docs/4.4/examples/product/).
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Docs
 
-### `yarn build`
+This small application works with `HTML` + `CSS` template and a `JSON`, defined in `src/config/tools.js`, which I decided to leave as Javascript file, to allow you to use variables for standard or repetitive properties.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 1. HTML
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Place all your HTML and CSS and Javascript dependencies at `public/index.html` between the comments , just please don't remove to allow the widget to render.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```html
+<html>
+  <head>
+    ...
+    <!-- Place your dependencies -->
 
-### `yarn eject`
+    <!-- End of dependencies -->
+  </head>
+  <body>
+    <!-- Place your markup here -->
+    <!-- End of markup -->
+    <div id="root"></div>
+  </body>
+</html>
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 2. Widget Settings
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| Property   | Type     | Required | Description                                       |
+| ---------- | -------- | -------- | ------------------------------------------------- |
+| label      | `string` | `true`   | Name to be displayed                              |
+| selector   | `string` | `true`   | Query selector to apply properties                |
+| type       | `string` | `false`  | default: class                                    | Not implemented other than class actually...(but planned) |
+| properties | `json`   | `true`   | Groups of classes to be applied using this widget |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```JSON
+[
+  {
+    label:"My Widget", // required
+    selector:"div.my-widget", // required
+    type: "", // optional
+    properties:{ // required
+      ....
+    }
+  }
+  ...
+]
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
 
-## Learn More
+#### Properties
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Let's say you have padding properties like in [Tailwind](https://tailwindcss.com/) so you can define a property Padding to group classes related to padding as follows
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+`src/config/tools.js`
 
-### Code Splitting
+```javascript
+const paddingProp = {
+  label: "Padding",
+  options: {
+    "": "Default",
+    "p-0": "None",
+    "p-1": "xs",
+    "p-3": "s",
+    "p-6": "m",
+    "p-12": "l",
+    "p-24": "xl",
+  },
+};
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+export default [
+  {
+    label: "box",
+    selector: "div.box",
+    properties: [paddingProp],
+  },
+];
+```
 
-### Analyzing the Bundle Size
+# License
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+MIT
