@@ -49,7 +49,7 @@ Place all your HTML and CSS and Javascript dependencies at `public/index.html` b
 | type       | `string` | `false`  | default: class                                    | Not implemented other than class actually...(but planned) |
 | properties | `json`   | `true`   | Groups of classes to be applied using this widget |
 
-```JSON
+```javascript
 [
   {
     label:"My Widget", // required
